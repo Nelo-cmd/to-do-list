@@ -8,9 +8,10 @@ function HomePage() {
 
   //to get the tasks for the local storage. Note: the '[]' is a dependency. sort of like an event listener, like it waits for a change in whatever is in that bracket.
   useEffect(() => {
-    const storedtasks = JSON.parse(localStorage.getItem("tasks"));
-    if (storedtasks) {
-      setTasks(storedtasks);
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    console.log("Stored tasks:", storedTasks); // Check the console for results
+    if (storedTasks) {
+      setTasks(storedTasks);
     }
   }, []);
 
@@ -22,14 +23,15 @@ function HomePage() {
   //this is to handle the adding of the task to local storage on button click.
   const HandleAddTask = (event) => {
     event.preventDefault();
-    if (taskInput.trim() <= 7)
-      return <p>text should be more than 7 characters</p>; // If the input field is less than 7, tell the user
-    setTasks(...tasks, taskInput);
+    if (taskInput.trim().length <= 7) {
+      alert("Text should be more than 7 characters");
+      return;
+    } // If the input field is less than 7, tell the user
+    setTasks([...tasks, taskInput.trim()]);
     setTaskInput("");
   };
 
-  const HandleDeleteTask = (event, index) => {
-    event.preventDefault();
+  const HandleDeleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index); // Create a new array without the deleted task
     setTasks(updatedTasks); // Update the tasks state
   };
@@ -37,15 +39,24 @@ function HomePage() {
   return (
     <>
       <></>
-      <form className="add_task">
+      <ul className="task_list">
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {task}
+            <input type="checkbox" onClick={() => HandleDeleteTask(index)} />
+          </li>
+        ))}
+      </ul>
+
+      <form className="add_task" onSubmit={HandleAddTask}>
         <input
+          value={taskInput}
           className="task_input"
           type="Textbox"
           placeholder="Add Task Here"
-        ></input>
-        <button type="submit" onClick={HandleAddTask}>
-          Add Task
-        </button>
+          onChange={(event) => setTaskInput(event.target.value)}
+        />
+        <button type="submit">Add Task</button>
       </form>
     </>
   );
