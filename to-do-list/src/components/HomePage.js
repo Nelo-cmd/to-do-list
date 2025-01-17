@@ -8,10 +8,15 @@ function HomePage() {
 
   //to get the tasks for the local storage. Note: the '[]' is a dependency. sort of like an event listener, like it waits for a change in whatever is in that bracket.
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    console.log("Stored tasks:", storedTasks); // Check the console for results
-    if (storedTasks) {
-      setTasks(storedTasks);
+    try {
+      const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+      console.log("Stored tasks:", storedTasks);
+      if (storedTasks) {
+        setTasks(storedTasks);
+      }
+    } catch (error) {
+      console.error("Error parsing tasks from localStorage:", error);
+      setTasks([]);
     }
   }, []);
 
@@ -23,7 +28,7 @@ function HomePage() {
   //this is to handle the adding of the task to local storage on button click.
   const HandleAddTask = (event) => {
     event.preventDefault();
-    if (taskInput.trim().length <= 7) {
+    if (taskInput.trim().length < 3) {
       alert("Text should be more than 7 characters");
       return;
     } // If the input field is less than 7, tell the user
@@ -43,20 +48,26 @@ function HomePage() {
         {tasks.map((task, index) => (
           <li key={index}>
             {task}
-            <input type="checkbox" onClick={() => HandleDeleteTask(index)} />
+            <input
+              id="button"
+              type="checkbox"
+              onClick={() => HandleDeleteTask(index)}
+            />
           </li>
         ))}
       </ul>
 
-      <form className="add_task" onSubmit={HandleAddTask}>
+      <form id="add_task" onSubmit={HandleAddTask}>
         <input
           value={taskInput}
-          className="task_input"
+          id="task_input"
           type="Textbox"
           placeholder="Add Task Here"
           onChange={(event) => setTaskInput(event.target.value)}
         />
-        <button type="submit">Add Task</button>
+        <button id="button" type="submit">
+          Add Task
+        </button>
       </form>
     </>
   );
