@@ -1,3 +1,4 @@
+import "../App.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -28,11 +29,11 @@ function Entry() {
   };
 
   return (
-    <form>
+    <form id="name_form">
       <h1>{message}</h1>
       {!isSubmitted && (
         <input
-          placeholder="?"
+          placeholder="Answer here"
           type="text"
           id="message"
           value={name}

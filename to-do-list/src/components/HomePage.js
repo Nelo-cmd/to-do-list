@@ -81,55 +81,68 @@ function HomePage() {
 
   return (
     <>
-      {/* Task List */}
-      <ul className="task_list">
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task}
-            <button id="edit_button" onClick={() => HandleEditTask(index)}>
-              Edit
-            </button>
-            <input
-              id="delete_button"
-              type="checkbox"
-              onClick={() => HandleDeleteTask(index)}
-            />
-          </li>
-        ))}
-      </ul>
+      <div id="page">
+        <h1>To-Do List</h1>
 
-      {/* Add Task Form */}
-      <form id="add_task" onSubmit={HandleAddTask}>
-        <input
-          value={taskInput}
-          id="task_input"
-          type="text"
-          placeholder="Add Task Here"
-          onChange={(event) => setTaskInput(event.target.value)}
-        />
-        <button id="add_button" type="submit">
-          Add Task
-        </button>
-      </form>
+        <div id="root">
+          {/* Task List */}
+          <ul className="task_list">
+            {tasks.map((task, index) => (
+              <li key={index}>
+                <input
+                  id="delete_button"
+                  type="checkbox"
+                  onClick={() => HandleDeleteTask(index)}
+                />
+                {task}
 
-      {/* Edit Task Form (only visible during editing) */}
-      {isEditing && (
-        <form id="edit_task" onSubmit={HandleSaveEdit}>
-          <input
-            value={editInput}
-            id="edit_input"
-            type="text"
-            placeholder="Edit Task Here"
-            onChange={(event) => setEditInput(event.target.value)}
-          />
-          <button id="save_button" type="submit">
-            Save
-          </button>
-          <button id="cancel_button" type="button" onClick={HandleCancelEdit}>
-            Cancel
-          </button>
-        </form>
-      )}
+                <button id="edit_button" onClick={() => HandleEditTask(index)}>
+                  Edit
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <div id="forms">
+            {/* Add Task Form */}
+            <form id="add_task" onSubmit={HandleAddTask}>
+              <input
+                value={taskInput}
+                id="task_input"
+                type="text"
+                placeholder="Add Task Here"
+                onChange={(event) => setTaskInput(event.target.value)}
+              />
+              <button id="add_button" type="submit">
+                Add Task
+              </button>
+            </form>
+
+            {/* Edit Task Form (only visible during editing) */}
+            {isEditing && (
+              <form id="edit_task" onSubmit={HandleSaveEdit}>
+                <input
+                  value={editInput}
+                  id="edit_input"
+                  type="text"
+                  placeholder="Edit Task Here"
+                  onChange={(event) => setEditInput(event.target.value)}
+                />
+                <button id="save_button" type="submit">
+                  Save
+                </button>
+                <button
+                  id="cancel_button"
+                  type="button"
+                  onClick={HandleCancelEdit}
+                >
+                  Cancel
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

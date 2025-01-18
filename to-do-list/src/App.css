@@ -1,38 +1,148 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgb(243, 165, 178);
+  font-family: "Times New Roman", Times, serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#name_form {
+  height: 50vh;
+  width: 70vw;
+  display: grid;
+  justify-self: center;
+  justify-items: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form h1 {
+  font-size: 8vh;
+  padding-bottom: 0px;
+  margin: 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form input {
+  font-size: xx-large;
+  border-style: solid;
+  border-width: 6px;
+  background-color: rgb(253, 253, 184);
+  border-color: black;
+  border-radius: 20px;
+  height: 10vh;
+  width: 30vw;
+}
+
+#submit {
+  border-width: 4px;
+  border-radius: 10px;
+  height: 10vh;
+  width: 14vw;
+  background-color: rgb(253, 253, 184);
+  font-size: x-large;
+}
+
+#submit:hover {
+  border-width: 4px;
+  border-radius: 10px;
+  height: 12vh;
+  width: 16vw;
+  background-color: rgb(184, 245, 253);
+  font-size: x-large;
+}
+
+#page {
+  display: grid;
+}
+
+#page h1 {
+  font-style: oblique;
+  font-size: 8vh;
+}
+
+#root {
   display: flex;
-  flex-direction: column;
+  width: 100vw;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#forms {
+  display: grid;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul {
+  padding: 0px;
+  margin: 0px;
+  display: block;
+  width: 40vw;
+  height: 80vh;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+ul li {
+  padding: 20px;
+  font-size: 3vw;
+  width: 100%;
+}
+
+#edit_button {
+  height: 40px;
+  width: 70px;
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: rgb(253, 253, 184);
+}
+
+#edit_button:hover {
+  height: 50px;
+  width: 80px;
+  background-color: rgb(184, 245, 253);
+}
+
+#delete_button {
+  height: 30px;
+  width: 60px;
+  background-color: rgb(184, 245, 253);
+}
+
+#add_task {
+  justify-self: center;
+  display: grid;
+  width: 40vw;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  margin-top: 0px;
+}
+
+#add_button,
+#cancel_button,
+#save_button {
+  height: 40px;
+  width: 120px;
+  margin-top: 20px;
+  margin-left: 10px;
+  border-radius: 20px;
+  background-color: rgb(253, 253, 184);
+}
+
+#add_button:hover,
+#cancel_button:hover,
+#save_button:hover {
+  height: 50px;
+  width: 130px;
+  background-color: rgb(184, 245, 253);
+}
+
+#edit_task {
+  justify-self: center;
+  display: grid;
+  width: 40vw;
+  height: 30vh;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit_input {
+  background-color: rgb(184, 245, 253);
 }
