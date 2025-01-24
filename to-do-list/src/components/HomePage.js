@@ -12,6 +12,9 @@ function HomePage() {
   const [editIndex, setEditIndex] = useState(null); // To store the index of the task being edited
   const [editInput, setEditInput] = useState(""); // To hold the edited task input
 
+  useEffect(() => {
+    document.title = "To-do App";
+  });
   // To get the tasks from local storage. Note: the '[]' is a dependency.
   // It's sort of like an event listener, waiting for changes in whatever is inside that bracket.
   useEffect(() => {

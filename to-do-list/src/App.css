@@ -49,6 +49,7 @@ form input {
 
 #page {
   display: grid;
+  position: fixed;
 }
 
 #page h1 {
